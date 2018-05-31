@@ -1,6 +1,6 @@
 # Taken from:
 # https://github.com/docker-library/php/blob/f504394473ea762a02a707325a9114df02987e71/7.1/jessie/fpm/Dockerfile
-
+# Slighty modified by Calamandino
 FROM debian:jessie
 MAINTAINER Yerco <yerco@hotmail.com>
 
@@ -32,6 +32,7 @@ RUN apt-get update && apt-get install -y \
 		ca-certificates \
 		curl \
 		xz-utils \
+		locate \
 	--no-install-recommends && rm -r /var/lib/apt/lists/*
 
 ENV PHP_INI_DIR /usr/local/etc/php

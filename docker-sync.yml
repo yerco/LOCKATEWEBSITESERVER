@@ -1,0 +1,28 @@
+version: 2
+options:
+    compose-file-path: 'docker-compose.yml'
+    verbose: true
+    max-attempt: 30
+syncs:
+
+    lockatesite-sync:
+        src: './LOCKATEWEBSITE'
+        sync_host_ip: 'auto'
+        sync_userid: 33
+        sync_strategy: 'native_osx'
+        sync_excludes: ['var', '.gitignore', '.git', 'vendor']
+
+#    lockateapi-sync:
+#        src: './LOCKATEAPI'
+#        sync_host_ip: 'auto'
+#        sync_userid: 33
+#        sync_strategy: 'native_osx'
+#        sync_excludes: ['var', '.gitignore', '.git', 'vendor']
+
+#    lockatewebsocket-sync:
+#        src: './LOCKWSSERVER'
+#        sync_host_ip: 'auto'
+#        sync_userid: 33
+#        sync_strategy: 'native_osx'
+#        sync_excludes: ['var', '.gitignore', '.git', 'vendor']
+

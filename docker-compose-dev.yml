@@ -1,0 +1,25 @@
+version: "2"
+
+services:
+      # `:nocopy` is important
+    lockate_site:
+
+        volumes:
+            - lockatesite-sync:/var/www/html/lockate_site:nocopy
+
+#    lockate_api:
+#        volumes:
+#            - lockateapi-sync:/var/www/html/lockate_api:nocopy
+
+#    lockate_websocketserver:
+#        volumes:
+#            - lockatewebsocket-sync:/opt/push_server:nocopy
+
+volumes:
+#    # this lockatesite-sync is created externally by docker-sync yml
+    lockatesite-sync:
+        external: true
+#    lockateapi-sync:
+#        external: true
+#    lockatewebsocket-sync:
+#        external: true
