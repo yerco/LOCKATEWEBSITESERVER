@@ -25,7 +25,7 @@ $ cd base
 $ docker build -t lock8/lock8-base .
 ```
 
-#### 1.1 Test base image
+#### 1.1 Test base image (optional)
 **DO NOT MAKE CHANGES TO THE MACHINE! (being tested)!**
 ```bash
 $ docker run -it lock8/lock8-base /bin/bash
@@ -51,7 +51,7 @@ $ cd LOCKATEAPI
 $ docker build -t lock8/lock8-api .
 ```
 
-#### 2.2 Test api image
+#### 2.2 Test api image (optional)
 
 **DO NOT MAKE CHANGES TO THE MACHINE! (being tested)**
 This test is just to check that the machine is working.
@@ -77,7 +77,7 @@ $ cd LOCKATEWEBSITE
 $ docker build -t lock8/lock8-website .
 ```
 
-#### 3.2 Test website image
+#### 3.2 Test website image (optional)
 
 **DO NOT MAKE CHANGES TO THE MACHINE! (being tested)**
 This test is just to check that the machine is working.
@@ -102,7 +102,7 @@ $ cd LOCKWSSERVER
 $ docker build -t lock8/lock8-wsserver .
 ```
 
-#### 4.2 Test websocket server image
+#### 4.2 Test websocket server image (optional)
 
 **DO NOT MAKE CHANGES TO THE MACHINE! (being tested)**
 This test is just to check that the machine is working.

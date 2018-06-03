@@ -5,15 +5,18 @@ services:
     lockate_site:
 
         volumes:
-            - lockatesite-sync:/var/www/html/lockate_site:nocopy
+            - ./LOCKATEWEBSITE:/var/www/html/lockate_website:cached
+            #- lockatesite-sync:/var/www/html/lockate_site:nocopy
 
-#    lockate_api:
-#        volumes:
-#            - lockateapi-sync:/var/www/html/lockate_api:nocopy
+    lockate_api:
+        volumes:
+            - ./LOCKATEAPI:/var/www/html/lockate-api:cached
+            #- lockateapi-sync:/var/www/html/lockate_api:nocopy
 
-#    lockate_websocketserver:
-#        volumes:
-#            - lockatewebsocket-sync:/opt/push_server:nocopy
+    lockate_websocketserver:
+        volumes:
+            - ./LOCKWSSERVER/:/opt/push_server:cached
+            #- lockatewebsocket-sync:/opt/push_server:nocopy
 
 volumes:
 #    # this lockatesite-sync is created externally by docker-sync yml

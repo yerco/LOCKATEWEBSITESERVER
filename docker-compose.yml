@@ -6,8 +6,8 @@ services:
       build:
           context: ./LOCKATEWEBSITE/
           dockerfile: Dockerfile
-      volumes:
-          - ./LOCKATEWEBSITE:/var/www/html/lockate_website:cached
+#      volumes:
+#          - ./LOCKATEWEBSITE:/var/www/html/lockate_website:cached
 #          - /tmp/cache:/cache
       links:
           - db
@@ -44,8 +44,8 @@ services:
       build:
           context: ./LOCKATEAPI/
           dockerfile: Dockerfile
-      volumes:
-          - ./LOCKATEAPI:/var/www/html/lockate-api:cached
+#      volumes:
+#          - ./LOCKATEAPI:/var/www/html/lockate-api:cached
 #          - /tmp/cache:/cache
       links:
           - db
