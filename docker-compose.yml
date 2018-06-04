@@ -6,7 +6,8 @@ services:
       build:
           context: ./LOCKATEWEBSITE/
           dockerfile: Dockerfile
-#      volumes:
+      volumes:
+          - lockate_site_app:/var/www/html/lockate_site
 #          - ./LOCKATEWEBSITE:/var/www/html/lockate_website:cached
 #          - /tmp/cache:/cache
       links:
@@ -16,7 +17,7 @@ services:
       environment:
           MYSQL_HOST: db
       working_dir:
-          /var/www/html/lockate_website
+          /var/www/html/lockate_site
 
   lockate_site_webserver:
       build: ./LOCKATEWEBSITESERVER
@@ -25,7 +26,7 @@ services:
       volumes_from:
           - lockate_site
       working_dir:
-          /var/www/html/lockate_website
+          /var/www/html/lockate_site
 
   db:
       image: mysql:5.6
@@ -44,8 +45,9 @@ services:
       build:
           context: ./LOCKATEAPI/
           dockerfile: Dockerfile
-#      volumes:
-#          - ./LOCKATEAPI:/var/www/html/lockate-api:cached
+      volumes:
+          - lockate_api_app:/var/www/html/lockate_api
+#          - ./LOCKATEAPI:/var/www/html/lockate_api:cached
 #          - /tmp/cache:/cache
       links:
           - db
@@ -61,7 +63,7 @@ services:
       volumes_from:
           - lockate_api
       working_dir:
-          /var/www/html/lockate-api
+          /var/www/html/lockate_api
 
   lockate_websocketserver:
       build:
