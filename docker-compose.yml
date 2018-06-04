@@ -6,8 +6,7 @@ services:
       build:
           context: ./LOCKATEWEBSITE/
           dockerfile: Dockerfile
-      volumes:
-          - lockate_site_app:/var/www/html/lockate_site
+#      volumes:
 #          - ./LOCKATEWEBSITE:/var/www/html/lockate_website:cached
 #          - /tmp/cache:/cache
       links:
@@ -23,8 +22,8 @@ services:
       build: ./LOCKATEWEBSITESERVER
       ports:
           - 9980:80
-      volumes_from:
-          - lockate_site
+#      volumes_from:
+#          - lockate_site
       working_dir:
           /var/www/html/lockate_site
 
@@ -45,8 +44,8 @@ services:
       build:
           context: ./LOCKATEAPI/
           dockerfile: Dockerfile
-      volumes:
-          - lockate_api_app:/var/www/html/lockate_api
+#      volumes:
+#          - lockate_api_app:/var/www/html/lockate_api
 #          - ./LOCKATEAPI:/var/www/html/lockate_api:cached
 #          - /tmp/cache:/cache
       links:
@@ -60,8 +59,8 @@ services:
       build: ./LOCKATEAPISERVER
       ports:
           - 9981:80
-      volumes_from:
-          - lockate_api
+#      volumes_from:
+#          - lockate_api
       working_dir:
           /var/www/html/lockate_api
 
