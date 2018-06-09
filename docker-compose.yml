@@ -1,4 +1,4 @@
-version: "2"
+version: "3"
 
 services:
 
@@ -17,15 +17,21 @@ services:
           MYSQL_HOST: db
       working_dir:
           /var/www/html/lockate_site
+      depends_on:
+          - db
+      expose:
+          - "9000"
 
   lockate_site_webserver:
       build: ./LOCKATEWEBSITESERVER
       ports:
           - 9980:80
-#      volumes_from:
-#          - lockate_site
-      working_dir:
-          /var/www/html/lockate_site
+      #volumes_from:
+      #    - lockate_site
+      depends_on:
+          - lockate_site
+      links:
+          - lockate_site
 
   db:
       image: mysql:5.6
@@ -54,15 +60,17 @@ services:
           - "8081:8081"
       environment:
           MYSQL_HOST: db
+      depends_on:
+          - db
 
   lockate_api_webserver:
       build: ./LOCKATEAPISERVER
       ports:
           - 9981:80
-#      volumes_from:
-#          - lockate_api
-      working_dir:
-          /var/www/html/lockate_api
+      #volumes_from:
+      #    - lockate_api
+      depends_on:
+          - lockate_api
 
   lockate_websocketserver:
       build:
@@ -73,3 +81,4 @@ services:
           - "5556:5556"
       environment:
           SERVER_LISTEN_URI: tcp://0.0.0.0:5556
+
