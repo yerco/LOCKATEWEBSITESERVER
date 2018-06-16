@@ -11,6 +11,10 @@ The **parameter.yml** of LOCKATEAPI and the **parameter.yml** LOCKATEWEBSITE
 must be copied to the the folder with the same name respectively.
 These files are not included in the repos for security reasons.
 
+### IP modification
+
+The JS files *client_side.js* and *lineWithFocus.js* need to include the static IP of the server hardcoded
+
 ### lockate_db
 
 This is required for the DB container to work properly.

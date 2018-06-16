@@ -11,14 +11,17 @@ services:
 #          - /tmp/cache:/cache
       links:
           - db
+          - lockate_websocketserver
       ports:
           - "8080:8080"
       environment:
           MYSQL_HOST: db
+          SERVER_CONNECT_URI: tcp://lockate_websocketserver:5556
       working_dir:
           /var/www/html/lockate_site
       depends_on:
           - db
+          - lockate_websocketserver
       expose:
           - "9000"
 
@@ -30,6 +33,7 @@ services:
       #    - lockate_site
       depends_on:
           - lockate_site
+          - lockate_websocketserver
       links:
           - lockate_site
 
@@ -62,6 +66,7 @@ services:
           MYSQL_HOST: db
       depends_on:
           - db
+          - lockate_websocketserver
 
   lockate_api_webserver:
       build: ./LOCKATEAPISERVER
@@ -71,6 +76,7 @@ services:
       #    - lockate_api
       depends_on:
           - lockate_api
+          - lockate_websocketserver
 
   lockate_websocketserver:
       build:
@@ -79,6 +85,18 @@ services:
       ports:
           - "8028:8028"
           - "5556:5556"
+      restart: always
       environment:
           SERVER_LISTEN_URI: tcp://0.0.0.0:5556
+
+  lockate_wammpost:
+      build:
+          context: ./LOCKATEWAMPPOST
+          dockerfile: Dockerfile
+      ports:
+          - "5051:5051"
+          - "8051:8051"
+      restart: always
+      depends_on:
+          - db
 
